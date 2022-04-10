@@ -9,23 +9,29 @@
     </head>
     <body>
         <div id="container">
-            <h1 class="text">資訊社 —— 美食地圖</h1>
+            <h1 class="text_col">資訊社 —— 美食地圖</h1>
+            <div class="text_row">
+                <div class="checkbox_box" style="background-color: #FF776B; margin-left: 0px;" onclick="change_color(0)" id="c1"></div><div class="checkbox_text">熱食</div>
+                <div class="checkbox_box" style="background-color: #FFED5C;" onclick="change_color(1)" id="c2"></div><div class="checkbox_text">便當</div>
+                <div class="checkbox_box" style="background-color: #BCE3FF;" onclick="change_color(2)" id="c3"></div><div class="checkbox_text">飲料</div>
+            </div>
             <div id="map_container"><div id="map"></div></div>
 
-            <h1 class="text">更新日誌</h1>
-            <div id="update_note" class="text">
+
+            <h1 class="text_col">更新日誌</h1>
+            <div id="update_note" class="text_col">
                 <li>2022/4/8 第一次更新: 載入指標圖片, 完成部分檔案 || 預計增加: 可擴充功能(js), 更好的UI, 更好的css設計</li>
                 <li>還沒增加 :></li>
                 <li>還沒增加 :></li>
                 <li>還沒增加 :></li>
             </div>
 
-            <h1 class="text">網址列</h1>
+
+            <h1 class="text_col">關於</h1>
+            <div class="url">discord: temmie#1757</div>
             <div class="url"><a href="https://github.com/temmie8731979878/CYFM">原始碼(github)</a></div>
             <div class="url"><a href="https://www.latlong.net/">尋找經緯度</a></div>
         </div>
-        
-        
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7nNhYsMOA0VM20KnJe3WFMO7oYM7rZsg&callback=initMap"></script>
     </body>
 </html>
