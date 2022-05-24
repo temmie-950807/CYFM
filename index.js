@@ -1,5 +1,5 @@
 // 選項
-var color = ["#FF776B", "#FFED5C", "#BCE3FF", "#BFC0C0"];
+var color = ["#FF776B", "#FFED5C", "#BCE3FF"];
 var now_color = [true, true, true];
 function change_color(x){
   now_color[x] = !now_color[x];
@@ -7,9 +7,9 @@ function change_color(x){
 
   if (now_color[x] == 0){
     if (x == 0){
-      document.getElementById(`c${x+1}`).style = `background-color: #BFC0C0;`;
+      document.getElementById(`c${x+1}`).style = `background-color: rgb(200, 200, 200);`;
     }else{
-      document.getElementById(`c${x+1}`).style = `background-color: #BFC0C0;`;
+      document.getElementById(`c${x+1}`).style = `background-color: rgb(200, 200, 200);`;
     }
   }else{
     if (x == 0){
@@ -22,32 +22,45 @@ function change_color(x){
 
 // 地圖
 var list = [
-  [25.061339, 121.518562, "pointer/red.png", "<h2>成淵高中</h2>\n測試用"],
-  [25.063732, 121.513858, "pointer/red.png", "<h2>民權國中</h2>\n測試用"],
-  [25.060850, 121.515918, "pointer/red.png", "<h2>雙連國小</h2>\n測試用"],
+  // 熱食
 
-  [25.062850, 121.518676, "pointer/yellow.png", "<h2>公車站_1</h2>\n測試用"],
-  [25.062926, 121.516451, "pointer/yellow.png", "<h2>公車站_2</h2>\n測試用"],
+  // 便當
+  [25.060957, 121.521837, "pointer/yellow.png", "8-1 便當外送", "104台北市中山區錦西街8-1號", "0225310920"],
+  [25.064254, 121.515899, "pointer/yellow.png", "好味珍精緻便當", "No. 18大龍街大同區台北市103", "0225994152"],
+  [25.062448, 121.520834, "pointer/yellow.png", "童家小吃店 (便當，炒飯，炒麵)", "10491台北市中山區天祥路40號", "0225221941"],
+  [25.063629, 121.521383, "pointer/yellow.png", "新九龍燒臘", "10491台北市中山區民權西路19號1樓", "0225991178"],
+  [25.062526, 121.521092, "pointer/yellow.png", "MissEnergy能量小姐", "10491台北市中山區錦西街4-3號", "0225622212"],
+  [25.062000, 121.515880, "pointer/yellow.png", "惠發燒臘小吃店", "103台北市大同區民權西路144巷15號號", "0225530269"],
+  [25.063222, 121.521099, "pointer/yellow.png", "鬍鬚張魯肉飯", "10491台北市中山區民權西路43號", "0225930196"],
+  [25.063309, 121.520942, "pointer/yellow.png", "民權台菜自助餐", "10491台北市大同區民權西路47號", "0225997080"],
 
-  [25.063278, 121.513590, "pointer/blue.png", "<h2>大橋頭站</h2>\n測試用\n<img src=\"img\\temmie.png\""],
-  [25.062917, 121.520162, "pointer/blue.png", "<h2>民權西路站</h2>\n測試用\n<img src=\"img\\station_1.jpg\""],
+  // 飲料
+
 ];
+
 function initMap(){
   var location = {lat: 25.061339, lng: 121.518562}; // lat: 經度, lng: 緯度
-  function addmarker(i, lat, lng, icon, content){ // 增加地標
-    let p = {lat: lat, lng: lng}
+  let infoWindow = new google.maps.InfoWindow();
+
+  function addmarker(ip){ // 增加地標
+    lat=ip[0];
+    lng=ip[1];
+    icon=ip[2];
+    title=ip[3];
+    address=ip[4];
+    phonenumber=ip[5];
+    content=`<h2>${title}</h2>\n<h3>地址: </h3>${address}\n<h3>電話: </h3>${phonenumber}`;
+
+    let p = {lat: lat, lng: lng};
     let marker = new google.maps.Marker({
       position: p,
       map: map,
       icon: icon
     });
   
-    let infoWindow = new google.maps.InfoWindow({
-      content: content,
-    });
-  
     // info
     marker.addListener("dblclick", function(){
+      infoWindow.setContent(content);
       infoWindow.open(map, marker);
     });
     marker.addListener("mouseout", function(){ 
@@ -69,11 +82,11 @@ function initMap(){
   // 輸出畫面
   for (var i=0 ; i<list.length ; i++){
     if (now_color[0] == true && list[i][2] == "pointer/red.png"){
-      addmarker(i, list[i][0], list[i][1], list[i][2], list[i][3]);
+      addmarker(list[i]);
     }if (now_color[1] == true && list[i][2] == "pointer/yellow.png"){
-      addmarker(i, list[i][0], list[i][1], list[i][2], list[i][3]);
+      addmarker(list[i]);
     }if (now_color[2] == true && list[i][2] == "pointer/blue.png"){
-      addmarker(i, list[i][0], list[i][1], list[i][2], list[i][3]);
+      addmarker(list[i]);
     }
   }
 };
