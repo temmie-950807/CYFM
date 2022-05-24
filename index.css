@@ -8,81 +8,46 @@ body {
     flex-direction: column;
 }
 
-/* 勾選框框 */
-.checkbox_box{
-    display: flex;
-    justify-content: center;
+/* 最上方標題+篩選頁 */
+#top_bar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    z-index: 2;
+    background-color: rgb(197, 197, 197);
 
+    display: flex;
+    align-items: center;
+}
+
+/* 勾選框框 */
+.checkbox{
+    margin-left: 10px;
+    margin-right: 10px;
+
+    display: flex;
+    align-items: center;
+}
+.checkbox_box{
     height: 20px;
     width: 20px;
 
     border: 3px #1e1e1e solid;
     border-radius: 5px;
-    margin: 20px;
+    margin: 10px;
 }
 .checkbox_box:hover{
     transform: scale(1.1, 1.1);
 }
 
-/* 文字 */
-.text_col{ /* 所有直的文字類別 */
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    font-family: 微軟正黑體;
-    margin: 30px;
-    width: 80%;
-}
-.text_row{ /* 所有橫的文字類別 */
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    align-self: center;
-    justify-self: center;
-    font-family: 微軟正黑體;
-    margin: 30px;
-    width: 80%;
-}
-
 /* 地圖 */
-#map_container{ /* 包括地圖的框框 */
-    display: flex;
-    justify-content: center;
-}
-#map { /* 地圖 */
-    margin: 30px;
-    margin-top: 0px;
-    border: 3px #1e1e1e solid;
-    border-radius: 10px;
-
-    width: 80%;
-    height: 500px;
-}
-
-/* 更新日誌 */
-#update_note{ /* 更新日誌(包括著所以項目) */
-    display: flex;
-    flex-direction: column;
-    margin-top: 0px;
-}
-#update_note li{ /* 更新日誌的所有項目 */
-    margin: 10px;
-    margin-left: 0px;
-}
-
-/* 連結 */
-.url{
-    display: flex;
-    align-self: center;
-    font-family: 微軟正黑體;
-    margin: 30px;
-    width: 80%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-a:link, a:visited, a:hover{
-    color: black;
-}
-a:active{
-    color: gray;
+#map{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }

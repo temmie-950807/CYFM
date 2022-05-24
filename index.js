@@ -7,13 +7,13 @@ function change_color(x){
 
   if (now_color[x] == 0){
     if (x == 0){
-      document.getElementById(`c${x+1}`).style = `background-color: #BFC0C0; margin-left: 0px;`;
+      document.getElementById(`c${x+1}`).style = `background-color: #BFC0C0;`;
     }else{
       document.getElementById(`c${x+1}`).style = `background-color: #BFC0C0;`;
     }
   }else{
     if (x == 0){
-      document.getElementById(`c${x+1}`).style = `background-color: ${color[x]}; margin-left: 0px;`;
+      document.getElementById(`c${x+1}`).style = `background-color: ${color[x]};`;
     }else{
       document.getElementById(`c${x+1}`).style = `background-color: ${color[x]};`;
     }
