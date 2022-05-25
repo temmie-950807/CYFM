@@ -46,10 +46,6 @@ function initMap(){
     lat=ip[0];
     lng=ip[1];
     icon=ip[2];
-    title=ip[3];
-    address=ip[4];
-    phonenumber=ip[5];
-    content=`<h2>${title}</h2>\n<h3>地址: </h3>${address}\n<h3>電話: </h3>${phonenumber}`;
 
     let p = {lat: lat, lng: lng};
     let marker = new google.maps.Marker({
@@ -60,6 +56,10 @@ function initMap(){
   
     // info
     marker.addListener("dblclick", function(){
+      title=ip[3];
+      address=ip[4];
+      phonenumber=ip[5];
+      content=`<h2>${title}</h2>\n<h3>地址: </h3>${address}\n<h3>電話: </h3>${phonenumber}`;
       infoWindow.setContent(content);
       infoWindow.open(map, marker);
     });
