@@ -1,3 +1,5 @@
+window.alert = function(){};
+
 // 選項
 var color = ["#FF776B", "#FFED5C", "#BCE3FF"];
 var now_color = [true, true, true];
@@ -23,6 +25,9 @@ function change_color(x){
 // 地圖
 var list = [
   // 熱食
+  [25.061339, 121.518562, "pointer/red.png", "成淵高中", "測試用", "0000000000"],
+  [25.063732, 121.513858, "pointer/red.png", "民權國中", "測試用", "0000000000"],
+  [25.060850, 121.515918, "pointer/red.png", "雙連國小", "測試用", "0000000000"],
 
   // 便當
   [25.060957, 121.521837, "pointer/yellow.png", "8-1 便當外送", "104台北市中山區錦西街8-1號", "0225310920"],
@@ -35,7 +40,8 @@ var list = [
   [25.063309, 121.520942, "pointer/yellow.png", "民權台菜自助餐", "10491台北市大同區民權西路47號", "0225997080"],
 
   // 飲料
-
+  [25.063278, 121.513590, "pointer/blue.png", "大橋頭站", "測試用", "0000000000"],
+  [25.062917, 121.520162, "pointer/blue.png", "民權西路站", "測試用", "0000000000"]
 ];
 
 function initMap(){
@@ -48,22 +54,25 @@ function initMap(){
     icon=ip[2];
 
     let p = {lat: lat, lng: lng};
-    let marker = new google.maps.Marker({
+    let marker = new google.maps.Marker({ // 地標指標
       position: p,
       map: map,
-      icon: icon
+      icon: {
+        url: icon,
+        scaledSize: new google.maps.Size(30, 51)
+      }
     });
   
-    // info
-    marker.addListener("dblclick", function(){
+    marker.addListener("dblclick", function(){ // 詳細視窗
       title=ip[3];
       address=ip[4];
-      phonenumber=ip[5];
-      content=`<h2>${title}</h2>\n<h3>地址: </h3>${address}\n<h3>電話: </h3>${phonenumber}`;
+      number=ip[5];
+      content=`<div class="detail"><h2>${title}</h2>\n<h3>地址: </h3>${address}\n<h3>電話: </h3>${number}</div>`;
       infoWindow.setContent(content);
       infoWindow.open(map, marker);
     });
-    marker.addListener("mouseout", function(){ 
+    
+    marker.addListener("mouseout", function(){  // 動畫
       marker.setAnimation(null);
     });
     marker.addListener("mouseover", function(){
@@ -72,12 +81,13 @@ function initMap(){
   };
 
   var map = new google.maps.Map(document.getElementById("map"), { // 地圖初始化
-    zoom: 16,
+    zoom: 17,
     center: location,
     mapTypeControl: false, // 不能調整成衛星圖
     streetViewControl: false, // 不能調整成街景模式
     fullscreenControl: false // 不能用成全螢幕
   });
+  map.setOptions({minZoom: 16, maxZoom: 18}) // limit zoom
 
   // 輸出畫面
   for (var i=0 ; i<list.length ; i++){

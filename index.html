@@ -4,26 +4,32 @@
         <meta charset="utf-8">
         <title>CYFM</title>
 
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="pc.css" media="screen and (min-width: 992px)">
+        <link rel="stylesheet" href="mobile.css" media="screen and (max-width: 991px)">
+        <script src="index.js"></script>
         <script src="index.js"></script>
     </head>
     <body>
         <div id="container">
             <div id="top_bar">
-                <h1 style="margin-left: 15px; margin-right: 20px;">資訊社 —— 美食地圖</h1>
+                <b><div style="margin-left: 15px; font-size: 40px;">資訊社 —— 美食地圖</div></b>
                 <div id="split_line"></div>
-                <div class="checkbox">
-                    <div class="checkbox_box" style="background-color: #FF776B;" onclick="change_color(0)" id="c1"></div>
-                    <div class="checkbox_text">熱食</div>
+                <div class="checkbox_container">
+                    <div class="checkbox">
+                        <div class="checkbox_box" style="background-color: #FF776B;" onclick="change_color(0)" id="c1"></div>
+                        <div class="checkbox_text">熱食</div>
+                    </div>
+                    <div class="checkbox">
+                        <div class="checkbox_box" style="background-color: #FFED5C;" onclick="change_color(1)" id="c2"></div>
+                        <div class="checkbox_text">便當</div>
+                    </div>
+                    <div class="checkbox">
+                        <div class="checkbox_box" style="background-color: #BCE3FF;" onclick="change_color(2)" id="c3"></div>
+                        <div class="checkbox_text">飲料</div>
+                    </div>
                 </div>
-                <div class="checkbox">
-                    <div class="checkbox_box" style="background-color: #FFED5C;" onclick="change_color(1)" id="c2"></div>
-                    <div class="checkbox_text">便當</div>
-                </div>
-                <div class="checkbox">
-                    <div class="checkbox_box" style="background-color: #BCE3FF;" onclick="change_color(2)" id="c3"></div>
-                    <div class="checkbox_text">飲料</div>
-                </div>
+                <div id="split_line"></div>
+                <div style="margin-left: 15px; font-size: 30px;">雙擊圖標以查看詳細內容</div>
             </div>
             <div id="map"></div>
         </div>
