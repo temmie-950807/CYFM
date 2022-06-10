@@ -1,4 +1,4 @@
-window.alert = function(){};
+
 
 // 選項
 var color = ["#FF776B", "#FFED5C", "#BCE3FF"];
@@ -25,9 +25,18 @@ function change_color(x){
 // 地圖
 var list = [
   // 熱食
-  [25.061339, 121.518562, "pointer/red.png", "成淵高中", "測試用", "0000000000"],
-  [25.063732, 121.513858, "pointer/red.png", "民權國中", "測試用", "0000000000"],
-  [25.060850, 121.515918, "pointer/red.png", "雙連國小", "測試用", "0000000000"],
+  [25.063613, 121.520893, "pointer/red.png", "八方雲集 (台北天祥店)", "10491台北市中山區天祥路59號", "0225857853"],
+  [25.064217, 121.519593, "pointer/red.png", "すき家 SUKIYA 民權西路店", "104台北市中山區民權西路75號", "0800031131"],
+  [25.072995, 121.518984, "pointer/red.png", "Subway", "103台北市大同區承德路三段263號", "0225922229"],
+  [25.063791, 121.520403, "pointer/red.png", "麥當勞-民權三店", "10491台北市中山區民權西路68號", "0225115655"],
+  [25.059980, 121.523745, "pointer/red.png", "PIZZA HUT必勝客-馬偕外送店", "10446台北市中山區民生東路一段10號", "0225429698"],
+  [25.063325, 121.520947, "pointer/red.png", "三商巧福 民權門市", "104台灣台北市中山區民權西路45號", "0225864023"],
+  [25.063276, 121.521544, "pointer/red.png", "摩斯漢堡 民權西路店", "10491台灣台北市中山區民權西路25號", "0225958139"],
+  [25.062150, 121.521200, "pointer/red.png", "十方緣養生素食", "No. 2天祥路47巷中山區台北市台灣 104號3樓", "0225681507"],
+  
+  [25.059990, 121.518445, "pointer/red.png", "九月茶餐廳", "台北市大同區承德路二段213號", "0933002233"],
+  [25.060850, 121.515918, "pointer/red.png", "赤鐵 廣島燒專賣店", "台北市中山區撫順街12號", "0225927178"],
+  [25.063777, 121.520943, "pointer/red.png", "雙連國小", "測試用", "0000000000"],
 
   // 便當
   [25.060957, 121.521837, "pointer/yellow.png", "8-1 便當外送", "104台北市中山區錦西街8-1號", "0225310920"],
@@ -47,7 +56,9 @@ var list = [
 
 function initMap(){
   var location = {lat: 25.061339, lng: 121.518562}; // lat: 經度, lng: 緯度
-  let infoWindow = new google.maps.InfoWindow();
+  let infoWindow = new google.maps.InfoWindow({
+    setZIndex: 999999
+  });
 
   function addmarker(ip){ // 增加地標
     lat=ip[0];
@@ -70,7 +81,6 @@ function initMap(){
       number=ip[5];
       content=`<div class="detail"><h2>${title}</h2>\n<h3>地址: </h3>${address}\n<h3>電話: </h3>${number}</div>`;
       infoWindow.setContent(content);
-      infoWindow.setZIndex(10);
       infoWindow.open(map, marker);
     });
     
