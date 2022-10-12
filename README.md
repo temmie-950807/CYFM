@@ -1,5 +1,5 @@
 # Nothing here :D
-link: https://temmie8731979878.github.io/CYFM/
+link: https://temmie-950807.github.io/CYFM/
 
 # 更新日誌
 * V0.01 第一次更新: 載入指標圖片, 完成部分檔案 || 預計增加: 可擴充功能(js), 更好的UI, 更好的css設計
